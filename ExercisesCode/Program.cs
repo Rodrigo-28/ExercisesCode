@@ -125,6 +125,132 @@ Happy Coding!*/
 //Console.WriteLine(SquareDigitsBasic(9119).ToString());
 
 // task number two with linq
-int SquareDigitsLinq(int n) =>
-    int.Parse(string.Concat(n.ToString().Select(c => ((int)(c - '0') * (c - '0')).ToString())));
-Console.WriteLine(SquareDigitsLinq(9119).ToString());
+//int SquareDigitsLinq(int n) =>
+//    int.Parse(string.Concat(n.ToString().Select(c => ((int)(c - '0') * (c - '0')).ToString())));
+//Console.WriteLine(SquareDigitsLinq(9119).ToString());
+
+
+
+// task number 4
+/*Implement a function that computes the difference between two lists. The function should 
+ * remove all occurrences of elements from the first list (a) that are present in the second list (b).
+ * The order of elements in the first list should be preserved in the result.
+
+Examples
+If a = [1, 2] and b = [1], the result should be [2].
+
+If a = [1, 2, 2, 2, 3] and b = [2], the result should be [1, 3].*/
+
+//int[] a = new int[] { 1, 2, 2, 3, 4, 5 };
+//int[] b = new int[] { 2, 3 };
+
+//int[] ArrayDiff(int[] a, int[] b)
+//{
+//    List<int> list = new List<int>();
+//    for (int i = 0; i < a.Length; i++)
+//    {
+//        bool found = false;
+//        for (int j = 0; j < b.Length; j++)
+//        {
+//            if (a[i] == b[j])
+//            {
+//                found = true;
+//                break;
+//            }
+
+//        }
+//        if (!found)
+//        {
+//            list.Add(a[i]);
+//        }
+//    }
+//    return list.ToArray();
+
+
+//    //HashSet<int> setB = new HashSet<int>(b);
+
+//    //List<int> list = new List<int>();
+
+//    //foreach (int num in a)
+//    //{
+//    //    if (!setB.Contains(num))
+//    //    {
+//    //        list.Add(num);
+//    //    };
+
+//    //}
+//    ////int[] resultArray = list.ToArray();
+//    //return list.ToArray();
+
+
+//}
+
+//int[] resultArray = ArrayDiff(a, b);
+//foreach (int num in resultArray)
+//{
+//    Console.WriteLine(num);
+//}
+
+
+/*La consigna en español sería:
+
+Nuestra tarea es crear una función que pueda tomar cualquier número entero no negativo como argumento y 
+devolverlo con sus dígitos en orden descendente. Es decir, 
+reorganiza los dígitos para crear el número más grande posible.
+
+Ejemplos: Entrada: 42145 Salida: 54421
+
+Entrada: 145263 Salida: 654321
+
+Entrada: 123456789 Salida: 987654321*/
+
+//static int DescendingOrder(int num)
+//{
+//    if (num <= 0)
+//    {
+//        return -1;
+//    }
+//    string numberString = num.ToString();
+//    char[] changeString = numberString.ToCharArray();
+
+//    Array.Sort(changeString);
+
+//    Array.Reverse(changeString);
+//    string resultString = new string(changeString);
+
+
+
+//    return int.Parse(resultString);
+//}
+//Console.WriteLine(DescendingOrder(123).ToString());
+//Console.ReadKey();
+
+static int DescendingOrder(int num)
+{
+    if (num < 0)
+    {
+        return -1;
+    }
+
+    string numString = num.ToString();
+    char[] changeString = numString.ToCharArray();
+
+    for (int i = 0; i < changeString.Length - 1; i++)
+    {
+        for (int j = 0; j < changeString.Length - i - 1; j++)
+        {
+            if (changeString[j] < changeString[j + 1])
+            {
+
+                char temporal = changeString[j];
+                changeString[j] = changeString[j + 1];
+                changeString[j + 1] = temporal;
+            }
+
+        }
+    }
+    string resulString = new string(changeString);
+
+    return int.Parse(resulString);
+}
+Console.WriteLine(DescendingOrder(1021));
