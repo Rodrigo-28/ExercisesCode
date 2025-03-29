@@ -225,32 +225,89 @@ Entrada: 123456789 Salida: 987654321*/
 //Console.WriteLine(DescendingOrder(123).ToString());
 //Console.ReadKey();
 
-static int DescendingOrder(int num)
+//static int DescendingOrder(int num)
+//{
+//    if (num < 0)
+//    {
+//        return -1;
+//    }
+
+//    string numString = num.ToString();
+//    char[] changeString = numString.ToCharArray();
+
+//    for (int i = 0; i < changeString.Length - 1; i++)
+//    {
+//        for (int j = 0; j < changeString.Length - i - 1; j++)
+//        {
+//            if (changeString[j] < changeString[j + 1])
+//            {
+
+//                char temporal = changeString[j];
+//                changeString[j] = changeString[j + 1];
+//                changeString[j + 1] = temporal;
+//            }
+
+//        }
+//    }
+//    string resulString = new string(changeString);
+
+//    return int.Parse(resulString);
+//}
+//Console.WriteLine(DescendingOrder(1021));
+
+
+/*************** TASK ****************/
+/*Tarea: Completa la solución de manera que se divida la cadena en pares de dos caracteres. Si la cadena contiene un número impar de caracteres, se debe reemplazar el segundo carácter faltante en el último par con un guion bajo ('_').
+
+Ejemplos:
+
+'abc' => ['ab', 'c_']
+
+'abcdef' => ['ab', 'cd', 'ef'*/
+
+//static string[] Solution(string str)
+//{
+//    char[] chars = str.ToCharArray();
+
+//    int resultSize = (chars.Length + 1) / 2;
+//    string[] result = new string[resultSize];
+//    //Si i + 1 < chars.Length, significa que aún hay un carácter en esa posición, es decir, tenemos un par completo.
+//    for (int i = 0; i < chars.Length; i += 2)
+//    {
+//        if (i + 1 < chars.Length)
+//        {
+//            result[i / 2] = new string(new char[] { chars[i], chars[i + 1] });
+//        }
+//        else
+//        {
+//            result[i / 2] = new string(new char[] { chars[i], '_' });
+//        }
+
+//    }
+//    return result;
+//}
+// the best resolution
+string[] Solution(string str)
 {
-    if (num < 0)
+    if (str.Length % 2 == 1)
+        str += "_";
+
+    List<string> list = new List<string>();
+    for (int i = 0; i < str.Length; i += 2)
     {
-        return -1;
+        list.Add(str[i].ToString() + str[i + 1]);
     }
 
-    string numString = num.ToString();
-    char[] changeString = numString.ToCharArray();
-
-    for (int i = 0; i < changeString.Length - 1; i++)
-    {
-        for (int j = 0; j < changeString.Length - i - 1; j++)
-        {
-            if (changeString[j] < changeString[j + 1])
-            {
-
-                char temporal = changeString[j];
-                changeString[j] = changeString[j + 1];
-                changeString[j + 1] = temporal;
-            }
-
-        }
-    }
-    string resulString = new string(changeString);
-
-    return int.Parse(resulString);
+    return list.ToArray();
 }
-Console.WriteLine(DescendingOrder(1021));
+
+
+
+
+foreach (var item in Solution("abcd"))
+{
+    Console.WriteLine(item.ToString());
+}
+
+
+
