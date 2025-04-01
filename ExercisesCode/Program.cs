@@ -287,27 +287,63 @@ Ejemplos:
 //    return result;
 //}
 // the best resolution
-string[] Solution(string str)
+//En cambio, si al menos uno de los operandos es string, C# lo trata como concatenación en lugar de suma:
+//string[] Solution(string str)
+//{
+//    if (str.Length % 2 == 1)
+//        str += "_";
+
+//    List<string> list = new List<string>();
+//    for (int i = 0; i < str.Length; i += 2)
+//    {
+//        list.Add(str[i].ToString() + str[i + 1]);
+//    }
+
+//    return list.ToArray();
+//}
+
+
+
+
+//foreach (var item in Solution("abcd"))
+//{
+//    Console.WriteLine(item.ToString());
+//}
+
+
+/************************************ TASK *****************************/
+//static int Find(int[] integers)
+
+//{
+//    int eveCount = 0;
+//    for (int i = 0; i < 3; i++)
+//    {
+//        if (integers[i] % 2 == 0) eveCount++;
+//    }
+//    bool isMostlyEven = eveCount >= 2;
+
+//    foreach (int num in integers)
+//    {
+//        if (isMostlyEven && num % 2 != 0) return num;
+//        if (!isMostlyEven && num % 2 == 0) return num;
+//    }
+//    return -1;
+//}
+
+// ejemplo con linq
+static int Find(int[] integers)
+
 {
-    if (str.Length % 2 == 1)
-        str += "_";
+    //agrupo numeros por su paridad
+    var parityGroups = integers.GroupBy(n => n % 2 == 0 ? "Par " : "Impar");
+    // encontrar el grupo con menos elementos
 
-    List<string> list = new List<string>();
-    for (int i = 0; i < str.Length; i += 2)
-    {
-        list.Add(str[i].ToString() + str[i + 1]);
-    }
+    var outlierGroup = parityGroups.OrderBy(g => g.Count()).First();
 
-    return list.ToArray();
+    return outlierGroup.First();
 }
 
-
-
-
-foreach (var item in Solution("abcd"))
-{
-    Console.WriteLine(item.ToString());
-}
-
+Console.WriteLine(Find([9, 3, 1719, 19, 11, 13, -20]).ToString());
+Console.ReadKey();
 
 
