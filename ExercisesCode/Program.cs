@@ -331,19 +331,82 @@ Ejemplos:
 //}
 
 // ejemplo con linq
-static int Find(int[] integers)
+//static int Find(int[] integers)
 
+//{
+//    //agrupo numeros por su paridad
+//    var parityGroups = integers.GroupBy(n => n % 2 == 0 ? "Par " : "Impar");
+//    // encontrar el grupo con menos elementos
+
+//    var outlierGroup = parityGroups.OrderBy(g => g.Count()).First();
+
+//    return outlierGroup.First();
+//}
+
+//Console.WriteLine(Find([9, 3, 1719, 19, 11, 13, -20]).ToString());
+//Console.ReadKey();
+
+
+//     ********************** TASK *********************/
+//Una forma común de lidiar con esta situación es eliminar todas las vocales de los comentarios de los trolls,
+//neutralizando así la amenaza.
+
+//Tu tarea es escribir una función que reciba una cadena de texto (string) y devuelva una nueva cadena con todas las vocales eliminadas.
+
+//Por ejemplo, la cadena "This website is for losers LOL!" se convertiría en "Ths wbst s fr lsrs LL!".
+
+//Nota: Para este kata, la letra "y" no se considera una vocal.
+
+static string Disemvowel(string str)
 {
-    //agrupo numeros por su paridad
-    var parityGroups = integers.GroupBy(n => n % 2 == 0 ? "Par " : "Impar");
-    // encontrar el grupo con menos elementos
+    //char[] caracteres = str.ToCharArray();
 
-    var outlierGroup = parityGroups.OrderBy(g => g.Count()).First();
+    //List<char> lista = new List<char>(caracteres);
 
-    return outlierGroup.First();
+    //lista.RemoveAll(c => "aeiouAEIOU".Contains(c));
+
+    //string resultado = new string(lista.ToArray());
+
+    //return resultado;
+
+
+    // otra solucion
+    //var stringRespuesta = str.ToLower();
+
+    //char[] arr = stringRespuesta.ToCharArray();
+    //List<char> sinVocales = new List<char>();
+
+    //for (int i = 0; i < arr.Length; i++)
+    //{
+    //    if (arr[i] != 'a' && arr[i] != 'e' && arr[i] != 'i' && arr[i] != 'o' && arr[i] != 'u')
+    //    {
+    //        sinVocales.Add(arr[i]);
+    //    };
+    //}
+    //string respuesta = new string(sinVocales.ToArray());
+
+    //return respuesta;
+
+    // con linq
+    //var stringRespuesta = str.ToUpper();
+
+    //char[] caracteres = stringRespuesta.ToCharArray();
+
+    //char[] resultado = caracteres.Where(e => !"AEIOU".Contains(e)).ToArray();
+
+    //return new string(resultado.ToArray());
+    // otra solucion
+
+    string[] vowels = { "a", "e", "i", "o", "u", "A", "E", "I", "O", "U" };
+    for (int i = 0; i < vowels.Length; i++)
+    {
+        str = str.Replace(vowels[i], "");
+    }
+    return str;
+
+
+
 }
 
-Console.WriteLine(Find([9, 3, 1719, 19, 11, 13, -20]).ToString());
-Console.ReadKey();
-
+Console.WriteLine(Disemvowel("aaaabbbbbcccceeeeiiiooouuuxxx"));
 
