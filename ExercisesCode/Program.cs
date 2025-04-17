@@ -211,52 +211,115 @@ Console.WriteLine("Hello, World!");
 //Además, no puede haber más de 3 símbolos romanos idénticos seguidos.
 
 
-static string Solution(int n)
+//static string Solution(int n)
+//{
+//    //string resultado = "";
+//    //int resta = n;
+//    //int[] valores = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+//    //string[] simbolos = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+
+
+//    //for (int i = 0; i < valores.Length; i++)
+//    //{
+//    //    while (resta >= valores[i])
+//    //    {
+//    //        resultado += simbolos[i];
+//    //        resta -= valores[i];
+//    //    }
+//    //}
+//    //return resultado;
+
+//    // con diccionario
+//    var mapa = new Dictionary<int, string>()
+//    {
+//        {1000, "M"},
+//        {900, "CM"},
+//        {500, "D"},
+//        {400, "CD"},
+//        {100, "C"},
+//        {90, "XC"},
+//        {50, "L"},
+//        {40, "XL"},
+//        {10, "X"},
+//        {9, "IX"},
+//        {5, "V"},
+//        {4, "IV"},
+//        {1, "I"}
+//    };
+//    string resultado = "";
+//    foreach (var par in mapa)
+//    {
+//        while (n >= par.Key)
+//        {
+//            resultado += par.Value;
+//            n -= par.Key;
+//        }
+//    }
+
+//    return resultado;
+//}
+
+//Console.WriteLine(Solution(1987));
+
+
+// *****        TASK        *******/
+
+//ROT13 es un cifrado de sustitución de letras simple que reemplaza una letra con la letra que se encuentra 13 posiciones después en el alfabeto. ROT13 es un ejemplo del cifrado César.
+
+//Crea una función que reciba una cadena de texto (string) y devuelva esa cadena cifrada con ROT13.
+//Si hay números o caracteres especiales en la cadena, deben devolverse tal como están.
+//Solo las letras del alfabeto latino/inglés deben desplazarse, como en la implementación original de ROT13.
+
+
+
+static string Rot13(string message)
 {
-    //string resultado = "";
-    //int resta = n;
-    //int[] valores = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-    //string[] simbolos = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+    //message = message.ToUpper();
 
+    //char[] buffer = new char[message.Length];
 
-    //for (int i = 0; i < valores.Length; i++)
+    //for (int i = 0; i < message.Length; i++)
     //{
-    //    while (resta >= valores[i])
+    //    char c = message[i];
+
+    //    if (c >= 'A' && c <= 'M' || c >= 'a' && c <= 'm')
     //    {
-    //        resultado += simbolos[i];
-    //        resta -= valores[i];
+    //        buffer[i] = (char)(c + 13);
     //    }
+    //    else if (c >= 'N' && c <= 'Z' || c >= 'n' && c <= 'z')
+    //    {
+    //        buffer[i] = (char)(c - 13);
+    //    }
+    //    else
+    //    {
+    //        buffer[i] = c;
+    //    }
+
     //}
-    //return resultado;
+    //return new string(buffer);
 
-    // con diccionario
-    var mapa = new Dictionary<int, string>()
-    {
-        {1000, "M"},
-        {900, "CM"},
-        {500, "D"},
-        {400, "CD"},
-        {100, "C"},
-        {90, "XC"},
-        {50, "L"},
-        {40, "XL"},
-        {10, "X"},
-        {9, "IX"},
-        {5, "V"},
-        {4, "IV"},
-        {1, "I"}
-    };
-    string resultado = "";
-    foreach (var par in mapa)
-    {
-        while (n >= par.Key)
-        {
-            resultado += par.Value;
-            n -= par.Key;
-        }
-    }
 
-    return resultado;
+    // segunda opcion
+    //string result = "";
+    //foreach (var s in message)
+    //{
+    //    if ((s >= 'a' && s <= 'm') || (s >= 'A' && s <= 'M'))
+    //        result += Convert.ToChar((s + 13)).ToString();
+    //    else if ((s >= 'n' && s <= 'z') || (s >= 'N' && s <= 'Z'))
+    //        result += Convert.ToChar((s - 13)).ToString();
+    //    else result += s;
+    //}
+    //return result;
+    // opcion 3
+    //return string.Concat(message.Select(c => char.IsLetter(c) ? (char)(c + (char.ToLower(c) > 'm' ? -13 : 13)) : c));
+
 }
+Console.WriteLine(Rot13("abcDd"));
 
-Console.WriteLine(Solution(1987));
+
+
+
+
+/// List<char> abecedario = Enumerable.Range(inicio, 26)
+////    //                    .Select(x => (char)x)
+////    //                    .ToList();
