@@ -314,7 +314,7 @@ static string Rot13(string message)
     //return string.Concat(message.Select(c => char.IsLetter(c) ? (char)(c + (char.ToLower(c) > 'm' ? -13 : 13)) : c));
 
 }
-Console.WriteLine(Rot13("abcDd"));
+//Console.WriteLine(Rot13("abcDd"));
 
 
 
@@ -323,3 +323,6 @@ Console.WriteLine(Rot13("abcDd"));
 /// List<char> abecedario = Enumerable.Range(inicio, 26)
 ////    //                    .Select(x => (char)x)
 ////    //                    .ToList();
+///
+
+
