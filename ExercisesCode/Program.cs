@@ -272,7 +272,7 @@ Console.WriteLine("Hello, World!");
 
 
 
-static string Rot13(string message)
+//static string Rot13(string message)
 {
     //message = message.ToUpper();
 
@@ -313,16 +313,97 @@ static string Rot13(string message)
     // opcion 3
     //return string.Concat(message.Select(c => char.IsLetter(c) ? (char)(c + (char.ToLower(c) > 'm' ? -13 : 13)) : c));
 
+    //}
+    //Console.WriteLine(Rot13("abcDd"));
+
+
+
+
+
+    /// List<char> abecedario = Enumerable.Range(inicio, 26)
+    ////    //                    .Select(x => (char)x)
+    ////    //                    .ToList();
+    ///
+
+    // task //
+
+    //Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+
+    //Example
+    //Kata.CreatePhoneNumber(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 })
+    //static string CreatePhoneNumber(int[] numbers)
+    //{
+    //    //string resultado = "";
+    //    //int[] codigoArea = new int[3];
+    //    //int[] primerosDigitos = new int[3];
+    //    //int[] ultimosDigitos = new int[4];
+
+    //    //if (numbers.Length > 10 || numbers.Length < 10)
+    //    //{
+    //    //    resultado = "el arreglo esta fuera de ranfgo";
+    //    //}
+    //    //for (int i = 0; i < numbers.Length; i++)
+    //    //{
+    //    //    if (i < 3)
+    //    //    {
+    //    //        codigoArea[i] = numbers[i];
+
+    //    //    }
+    //    //    else if (i < 6)
+    //    //    {
+    //    //        primerosDigitos[i - 3] = numbers[i];
+    //    //    }
+    //    //    else
+    //    //    {
+    //    //        ultimosDigitos[i - 6] = numbers[i];
+    //    //    }
+
+
+    //    //}
+    //    //string area = "(" + string.Join("", codigoArea) + ")";
+    //    //string primerosNumeros = " " + string.Join("", primerosDigitos) + "-";
+    //    //string ultimoDigitos = string.Join("", ultimosDigitos);
+
+    //    //return area + primerosNumeros + ultimoDigitos;
+
+
+    //    // otra solucion sencilla
+    //    //return $"({numbers[0]}{numbers[1]}{numbers[2]}) " +
+    //    //  $"{numbers[3]}{numbers[4]}{numbers[5]}-" +
+    //    //  $"{numbers[6]}{numbers[7]}{numbers[8]}{numbers[9]}";
+
+    //    //otra solucion con linq
+    //    //    var textos = numbers.Select(x => x.ToString());
+    //    //    string area = string.Concat(textos.Take(3));
+    //    //    string prefix = string.Concat(textos.Skip(3).Take(3));
+
+    //    //    string line = string.Concat(textos.Skip(6).Take(4));
+
+    //    //    return $"({area}) {prefix}- {line}";
+
+    //    //return string.Format("({0}{1}{2}) {3}{4}{5}-{6}{7}{8}{9}", numbers.Select(x => x.ToString()).ToArray());
+
+    //    //}
+
+
+
+    //    //int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+    //    //Console.WriteLine(CreatePhoneNumber(numbers));
+
+
+    ////}
+
+    static bool IsPrime(int n)
+    {
+        if (n <= 1) return false;
+
+        for (int i = 2; i < n; i++)
+        {
+            if (n % i == 0) return false;
+        }
+        return true;
+
+    }
+
+    Console.WriteLine(IsPrime(10).ToString());
 }
-//Console.WriteLine(Rot13("abcDd"));
-
-
-
-
-
-/// List<char> abecedario = Enumerable.Range(inicio, 26)
-////    //                    .Select(x => (char)x)
-////    //                    .ToList();
-///
-
-
