@@ -393,17 +393,239 @@ Console.WriteLine("Hello, World!");
 
     ////}
 
-    static bool IsPrime(int n)
+    //static bool IsPrime(int n)
+    //{
+    //    if (n <= 1) return false;
+
+    //    for (int i = 2; i < n; i++)
+    //    {
+    //        if (n % i == 0) return false;
+    //    }
+    //    return true;
+
+    //}
+
+    //Console.WriteLine(IsPrime(10).ToString());
+
+
+    //    La idea principal es contar todos los caracteres que aparecen en una cadena.
+    //Si tienes una cadena como "aba", entonces el resultado debería ser:
+    //    { 'a': 2, 'b': 1}.
+
+    //¿Y si la cadena está vacía?
+    //Entonces el resultado debería ser un objeto vacío: { }.
+
+    //static Dictionary<char, int> Count(string str)
+    //{
+    //    char[] cadena = str.ToCharArray();
+    //    Dictionary<char, int> letras = new Dictionary<char, int>();
+
+    //    //foreach (char c in cadena)
+    //    //{
+    //    //    letras.Add(c, 0);
+    //    //}
+
+
+    //    foreach (char c in str)
+    //    {
+
+    //        if (letras.ContainsKey(c))
+    //        {
+    //            letras[c]++;
+    //        }
+    //        else
+    //        {
+    //            letras[c] = 1;
+    //        }
+    //    }
+
+
+
+    //    return letras;
+
+    //    /*** con LINQ ***/
+
+    //    //return str.
+    //    //    GroupBy(c => c)//Agrupa los caracteres iguales juntos ('a','a','b' → grupos de 'a' y 'b')
+    //    //    .ToDictionary(g => g.Key, g => g.Count());//	Crea un diccionario con: clave = carácter (g.Key), valor = cantidad (g.Count())
+
+
+    //}
+
+    //var resultado = Count("aabbbzz");
+
+    //foreach (KeyValuePair<char, int> par in resultado)
+    //{
+    //    Console.WriteLine($"'{par.Key}' aparece {par.Value} veces.");
+    //}
+
+
+
+
+    /*task*/
+    //                📝 Tarea: Ordenar una cadena según números dentro de las palabras
+    //Tu tarea es ordenar una cadena de texto dada.
+    //Cada palabra en la cadena contendrá un solo número.
+    //Ese número indica la posición que la palabra debe tener en el resultado final.
+
+    //📌 Nota:
+    //    Los números estarán en el rango del 1 al 9.
+    //Por lo tanto, 1 será la primera palabra(no el índice 0).
+
+    //Si la cadena de entrada está vacía, debes retornar una cadena vacía.
+
+    //Las palabras en la cadena solo contendrán números válidos y consecutivos.
+
+    //📚 Ejemplos:
+    //    "is2 Thi1s T4est 3a" → "Thi1s is2 3a T4est"
+
+
+    //static string Order(string words)
+    //{
+    //    string[] wordsWithComa = words.Split(' ');
+
+    //    for (int i = 0; i < wordsWithComa.Length; i++)
+    //    {
+
+    //    }
+    //    return string.Join(" ", wordsWithComa);
+
+    //}
+    //Console.WriteLine(Order("sfasf fasfas afas"));
+
+
+
+    //public class PaginationHelper<T>
+    //{
+    //    private readonly IList<T> _collection;
+    //    private readonly int _itemsPerPage;
+
+    //    public PaginationHelper(IList<T> collection, int itemsPerPage)
+    //    {
+    //        this._collection = collection;
+    //        this._itemsPerPage = itemsPerPage;
+    //    }
+
+
+    //    public int ItemCount
+    //    {
+    //        get
+    //        {
+    //            return _collection.Count();
+    //        }
+    //    }
+
+
+    //    public int PageCount
+    //    {
+    //        get
+    //        {
+    //            var pageCount = Math.Ceiling((double)_collection.Count() / _itemsPerPage);
+    //            return Convert.ToInt32(pageCount);
+    //        }
+    //    }
+
+
+    //    public int PageItemCount(int pageIndex)
+    //    {
+    //        if (pageIndex < 0 || PageCount >= _itemsPerPage) return -1;
+    //        // Si no es la última página
+    //        if (pageIndex < PageCount - 1)
+    //        {
+    //            return _itemsPerPage;
+    //        }
+    //        int totalItems = _collection.Count;
+    //        int totalFullPagesItems = (PageCount - 1) * _itemsPerPage;
+    //        return totalItems - totalFullPagesItems;
+    //    }
+
+
+    //    public int PageIndex(int itemIndex)
+    //    {
+    //        if (itemIndex < 0 || itemIndex >= _collection.Count)
+    //        {
+    //            return -1;
+    //        }
+
+    //        return itemIndex / _itemsPerPage;
+    //    }
+}
+
+public class RomanNumerals
+{
+
+    public static string ToRoman(int n)
     {
-        if (n <= 1) return false;
-
-        for (int i = 2; i < n; i++)
+        var mapa = new Dictionary<int, string>()
+    {
+        {1000, "M"},
+        {900, "CM"},
+        {500, "D"},
+        {400, "CD"},
+        {100, "C"},
+        {90, "XC"},
+        {50, "L"},
+        {40, "XL"},
+        {10, "X"},
+        {9, "IX"},
+        {5, "V"},
+        {4, "IV"},
+        {1, "I"}
+    };
+        string resultado = "";
+        // Paso 2: recorrer el mapa
+        foreach (var par in mapa)
         {
-            if (n % i == 0) return false;
+            while (n >= par.Key)
+            {
+                Console.WriteLine(par.Key.ToString());
+                resultado += par.Value;
+                n -= par.Key;
+            }
         }
-        return true;
 
+        return resultado;
     }
 
-    Console.WriteLine(IsPrime(10).ToString());
+    public static int FromRoman(string romanNumeral)
+    {
+
+        var mapa = new Dictionary<int, string>()
+    {
+        {1000, "M"},
+        {900, "CM"},
+        {500, "D"},
+        {400, "CD"},
+        {100, "C"},
+        {90, "XC"},
+        {50, "L"},
+        {40, "XL"},
+        {10, "X"},
+        {9, "IX"},
+        {5, "V"},
+        {4, "IV"},
+        {1, "I"}
+    };
+
+        int resultado = 0;
+        while (romanNumeral.Length > 0)
+        {
+            foreach (var par in mapa)
+            {
+                if (romanNumeral.StartsWith(par.Value))
+                {
+                    resultado += par.Key;
+                    romanNumeral = romanNumeral.Substring(par.Value.Length);
+                    break;
+                }
+            }
+        }
+
+        return resultado;
+    }
 }
+
+
+
+
+
