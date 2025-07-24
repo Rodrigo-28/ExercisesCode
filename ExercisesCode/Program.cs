@@ -551,79 +551,118 @@ Console.WriteLine("Hello, World!");
     //    }
 }
 
-public class RomanNumerals
+//public class RomanNumerals
+//{
+
+//    public static string ToRoman(int n)
+//    {
+//        var mapa = new Dictionary<int, string>()
+//    {
+//        {1000, "M"},
+//        {900, "CM"},
+//        {500, "D"},
+//        {400, "CD"},
+//        {100, "C"},
+//        {90, "XC"},
+//        {50, "L"},
+//        {40, "XL"},
+//        {10, "X"},
+//        {9, "IX"},
+//        {5, "V"},
+//        {4, "IV"},
+//        {1, "I"}
+//    };
+//        string resultado = "";
+//        // Paso 2: recorrer el mapa
+//        foreach (var par in mapa)
+//        {
+//            while (n >= par.Key)
+//            {
+//                Console.WriteLine(par.Key.ToString());
+//                resultado += par.Value;
+//                n -= par.Key;
+//            }
+//        }
+
+//        return resultado;
+//    }
+
+//    public static int FromRoman(string romanNumeral)
+//    {
+
+//        var mapa = new Dictionary<int, string>()
+//    {
+//        {1000, "M"},
+//        {900, "CM"},
+//        {500, "D"},
+//        {400, "CD"},
+//        {100, "C"},
+//        {90, "XC"},
+//        {50, "L"},
+//        {40, "XL"},
+//        {10, "X"},
+//        {9, "IX"},
+//        {5, "V"},
+//        {4, "IV"},
+//        {1, "I"}
+//    };
+
+//        int resultado = 0;
+//        while (romanNumeral.Length > 0)
+//        {
+//            foreach (var par in mapa)
+//            {
+//                if (romanNumeral.StartsWith(par.Value))
+//                {
+//                    resultado += par.Key;
+//                    romanNumeral = romanNumeral.Substring(par.Value.Length);
+//                    break;
+//                }
+//            }
+//        }
+
+//        return resultado;
+//    }
+//}
+
+static string[] GetFizzBuzzArray(int n)
 {
+    string[] resultado = new string[n];
 
-    public static string ToRoman(int n)
+    for (int i = 1; i <= n; i++)
     {
-        var mapa = new Dictionary<int, string>()
-    {
-        {1000, "M"},
-        {900, "CM"},
-        {500, "D"},
-        {400, "CD"},
-        {100, "C"},
-        {90, "XC"},
-        {50, "L"},
-        {40, "XL"},
-        {10, "X"},
-        {9, "IX"},
-        {5, "V"},
-        {4, "IV"},
-        {1, "I"}
-    };
-        string resultado = "";
-        // Paso 2: recorrer el mapa
-        foreach (var par in mapa)
+        if (i % 3 == 0 && i % 5 == 0)
         {
-            while (n >= par.Key)
-            {
-                Console.WriteLine(par.Key.ToString());
-                resultado += par.Value;
-                n -= par.Key;
-            }
+            resultado[i - 1] = "FizzBuzz";
         }
-
-        return resultado;
+        else if (i % 3 == 0)
+        {
+            resultado[i - 1] = "Fizz";
+        }
+        else if (i % 5 == 0)
+        {
+            resultado[i - 1] = "Buzz";
+        }
+        else
+        {
+            resultado[i - 1] = i.ToString();
+        }
     }
 
-    public static int FromRoman(string romanNumeral)
-    {
-
-        var mapa = new Dictionary<int, string>()
-    {
-        {1000, "M"},
-        {900, "CM"},
-        {500, "D"},
-        {400, "CD"},
-        {100, "C"},
-        {90, "XC"},
-        {50, "L"},
-        {40, "XL"},
-        {10, "X"},
-        {9, "IX"},
-        {5, "V"},
-        {4, "IV"},
-        {1, "I"}
-    };
-
-        int resultado = 0;
-        while (romanNumeral.Length > 0)
-        {
-            foreach (var par in mapa)
-            {
-                if (romanNumeral.StartsWith(par.Value))
-                {
-                    resultado += par.Key;
-                    romanNumeral = romanNumeral.Substring(par.Value.Length);
-                    break;
-                }
-            }
-        }
-
-        return resultado;
-    }
+    return resultado;
+    // con linq
+    return n > 0
+       ? Enumerable.Range(1, n)
+           .Select(x => x % 15 == 0 ? "FizzBuzz" : x % 3 == 0 ? "Fizz" : x % 5 == 0 ? "Buzz" : $"{x}")
+           .ToArray()
+       : throw new ArgumentOutOfRangeException();
 }
+
+
+
+
+
+
 
 
 
