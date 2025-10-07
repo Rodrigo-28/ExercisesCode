@@ -625,37 +625,87 @@ Console.WriteLine("Hello, World!");
 //    }
 //}
 
-static string[] GetFizzBuzzArray(int n)
+//static string[] GetFizzBuzzArray(int n)
+//{
+//    string[] resultado = new string[n];
+
+//    for (int i = 1; i <= n; i++)
+//    {
+//        if (i % 3 == 0 && i % 5 == 0)
+//        {
+//            resultado[i - 1] = "FizzBuzz";
+//        }
+//        else if (i % 3 == 0)
+//        {
+//            resultado[i - 1] = "Fizz";
+//        }
+//        else if (i % 5 == 0)
+//        {
+//            resultado[i - 1] = "Buzz";
+//        }
+//        else
+//        {
+//            resultado[i - 1] = i.ToString();
+//        }
+//    }
+
+//    return resultado;
+//    // con linq
+//    return n > 0
+//       ? Enumerable.Range(1, n)
+//           .Select(x => x % 15 == 0 ? "FizzBuzz" : x % 3 == 0 ? "Fizz" : x % 5 == 0 ? "Buzz" : $"{x}")
+//           .ToArray()
+//       : throw new ArgumentOutOfRangeException();
+//}
+
+
+//static int max(int[] list)
+//{
+//    var mayor = list[0];
+//    for (var i = 0; i < list.Length; i++)
+//    {
+//        if (list[i] > mayor)
+//        {
+//            mayor = list[i];
+//        }
+//    }
+//    return mayor;
+//}
+
+//static int min(int[] list)
+//{
+//    var menor = list[0];
+
+//    for (int i = 0; i < list.Length; i++)
+//    {
+//        if (list[i] < menor)
+//        {
+//            menor = list[i];
+//        };
+//    }
+//    return menor;
+//}
+
+//Console.WriteLine(min([1, -3, -4, -6, 8, -1, 0, 45]));
+
+static class FileNameExtractor
 {
-    string[] resultado = new string[n];
-
-    for (int i = 1; i <= n; i++)
+    public static string ExtractFileName(string dirtFileName)
     {
-        if (i % 3 == 0 && i % 5 == 0)
-        {
-            resultado[i - 1] = "FizzBuzz";
-        }
-        else if (i % 3 == 0)
-        {
-            resultado[i - 1] = "Fizz";
-        }
-        else if (i % 5 == 0)
-        {
-            resultado[i - 1] = "Buzz";
-        }
-        else
-        {
-            resultado[i - 1] = i.ToString();
-        }
-    }
+        var partes = dirtFileName.Split('_');
 
-    return resultado;
-    // con linq
-    return n > 0
-       ? Enumerable.Range(1, n)
-           .Select(x => x % 15 == 0 ? "FizzBuzz" : x % 3 == 0 ? "Fizz" : x % 5 == 0 ? "Buzz" : $"{x}")
-           .ToArray()
-       : throw new ArgumentOutOfRangeException();
+
+        string resto = string.Join("_", partes.Skip(1));
+
+
+        var secciones = resto.Split('.');
+
+
+        var sinExtensionExtra = secciones.Take(secciones.Length - 1);
+
+
+        return string.Join(".", sinExtensionExtra);
+    }
 }
 
 
